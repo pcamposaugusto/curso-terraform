@@ -3,16 +3,16 @@ terraform {
 
   required_providers {
     azurerm = {
-        source = "hashicorp/azurerm"
-        version = "3.64.0"
+      source  = "hashicorp/azurerm"
+      version = "3.64.0"
     }
   }
 
   backend "azurerm" {
-    resource_group_name = "remote-state"
+    resource_group_name  = "remote-state"
     storage_account_name = "pcamposremotestate"
-    container_name = "remote-state"
-    key = "azure-vm/terraform.tfstate"
+    container_name       = "remote-state"
+    key                  = "azure-vm/terraform.tfstate"
   }
 }
 
@@ -23,10 +23,11 @@ provider "azurerm" {
 data "terraform_remote_state" "vnet" {
   backend = "azurerm"
   config = {
-    resource_group_name = "remote-state"
+    resource_group_name  = "remote-state"
     storage_account_name = "pcamposremotestate"
-    container_name = "remote-state"
-    key = "azure-vnet/terraform.tfstate"
+    container_name       = "remote-state"
+    key                  = "azure-vnet/terraform.tfstate"
   }
 }
 
+# para acessar a vm pelo terminal: ssh -i nomeDoArquivoChavePrivada nomeUsuarioQueCriamos@IP
