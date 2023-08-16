@@ -26,7 +26,7 @@ provider "aws" {
     }
 }
 
-data "data terraform_remote_state" "vpc" {
+data "terraform_remote_state" "vpc" {
   backend = "s3"
 
   config {
